@@ -15,10 +15,12 @@
                     <p:commandLink id="lnkMesada" action="#{menuLogadoBean.redirecionaMesada()}">
                         <h:outputText value="Mesada" />
                     </p:commandLink>&emsp;
-                    <p:commandLink id="lnkCategoria" action="listacategorias">
+                    <p:commandLink id="lnkCategoria" action="listacategorias" 
+                                   rendered="#{menuLogadoBean.renderizaCampos}">
                         <h:outputText value="Categoria" />
                     </p:commandLink>&emsp;
-                    <p:commandLink id="lnkGasto" action="listagastos">
+                    <p:commandLink id="lnkGasto" action="listagastos"
+                                   rendered="#{menuLogadoBean.renderizaCampos}">
                         <h:outputText value="Gasto" />
                     </p:commandLink>&emsp;
                     <p:commandLink id="lnkRelatorio" action="relatorio">

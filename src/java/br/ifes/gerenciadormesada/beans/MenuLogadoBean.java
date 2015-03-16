@@ -11,6 +11,7 @@ import br.ifes.gerenciadormesada.util.ControlaLogin;
 import br.ifes.gerenciadormesada.util.ManipulaSessao;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +20,36 @@ import javax.servlet.http.HttpSession;
  * @author Vinicius
  */
 @ManagedBean(name = "menuLogadoBean")
-@RequestScoped
-public class MenuLogadoBean {
-
+@SessionScoped
+public class MenuLogadoBean
+{
+    private boolean renderizaCampos;
     
-    public MenuLogadoBean() {
+    public MenuLogadoBean()
+    {
+        ManipulaSessao sessao = new ManipulaSessao();
+        
+        String tipoUsuario = sessao.getTipoUsuario();
+        
+        if (tipoUsuario == "patrocinador")
+        {
+            this.renderizaCampos = false;
+        }
+        else
+        {
+            this.renderizaCampos = true;
+        }
     }
+
+    public boolean isRenderizaCampos() {
+        return renderizaCampos;
+    }
+
+    public void setRenderizaCampos(boolean renderizaCampos) {
+        this.renderizaCampos = renderizaCampos;
+    }
+    
+    
     
     public String redirecionaUsuario()
     { 
