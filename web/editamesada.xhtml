@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <ui:composition template="/templatelogado.xhtml">
+        <ui:define name="conteudo">
+            <fieldset>
+                <legend>Analisando a mesada...</legend>
+                <br />
+                <h:form id="formCadastro">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2" cellpadding="2">
+                        <p:outputLabel for="spnValor" value="Valor:" styleClass="lblForm" />
+                        <p:spinner id="spnValor" prefix="R$ " min="0.10" value="#{editaMesadaBean.mesada.valor}"
+                                   disabled="#{editaMesadaBean.desabilitaCampos}"/>
+
+                        <p:outputLabel for="spnMeta" value="Meta:" styleClass="lblForm" />
+                        <p:spinner id="spnMeta" prefix="R$ " min="0.10" value="#{editaMesadaBean.mesada.meta}"
+                                   disabled="#{editaMesadaBean.desabilitaCampos}"/>
+
+                        <p:outputLabel for="spnRecompensa" value="Recompensa:" styleClass="lblForm" />
+                        <p:spinner id="spnRecompensa" prefix="R$ " min="0.10" value="#{editaMesadaBean.mesada.recompensa}"
+                                   disabled="#{editaMesadaBean.desabilitaRecompensa}"/>
+
+                        <p:commandButton value="Alterar" ajax="false" action="#{editaMesadaBean.habilitaCampos()}" 
+                                         disabled="#{!editaMesadaBean.desabilitaCampos}"/>
+                        
+                        <h:inputHidden />                        
+                        <p:commandButton value="Remover" ajax="false" action="#{editaMesadaBean.remover()}"
+                                         disabled="#{editaMesadaBean.desabilitaCampos}">
+                            <f:setPropertyActionListener target="#{mesadaBean.mesada.valor}" value="0" />
+                            <f:setPropertyActionListener target="#{mesadaBean.mesada.meta}" value="0" />
+                            <f:setPropertyActionListener target="#{mesadaBean.mesada.recompensa}" value="0" />
+                        </p:commandButton>
+                        <p:commandButton value="Salvar" ajax="false" action="#{editaMesadaBean.alterar()}" 
+                                         disabled="#{editaMesadaBean.desabilitaCampos}"/> 
+
+                    </h:panelGrid>
+                </h:form>
+            </fieldset>
+        </ui:define>
+    </ui:composition>
+</html>
+
