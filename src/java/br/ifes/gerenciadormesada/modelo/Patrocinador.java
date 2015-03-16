@@ -20,12 +20,4 @@ public class Patrocinador extends Beneficiado {
         this.beneficiado = beneficiado;
     }   
     
-    public void cadastrarRecompensa() {
-        
-    }
-    
-    public void cadastrarBeneficiado() {
-        
-    }
-    
 }

@@ -102,15 +102,4 @@ public class Beneficiado extends AbstractModelo{
         this.email = email;
     }
     
-    public void cadastarMesada() {
-        
-    }
-    
-    public void cadastrarMeta() {
-        
-    }
-    
-    public void cadastrarGasto() {
-        
-    }
 }
